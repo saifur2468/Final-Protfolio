@@ -19,7 +19,7 @@ const projects = [
     title: "Volunteer-Management",
     image: "https://i.postimg.cc/jdGJ0vqn/Screenshot-2026-03-02-230510.png",
     description: "Connect passionate volunteers with meaningful causes.",
-    liveLink: "https://volunter-managment-ae225.web.app/",
+    liveLink: "https://volunter-managment-ae225.web.app",
   },
   {
     title: "English Janala",
