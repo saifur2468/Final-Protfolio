@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
 import chobi from '../assets/pic.jpg'
 import { IoMdCloudDownload } from "react-icons/io";
-import cvimg from '../assets/Brochure.pdf'
+import cvimg from '../assets/Saifur Final Cv.pdf'
 import { resume } from 'react-dom/server';
 const HeroSection = () => {
     return (
