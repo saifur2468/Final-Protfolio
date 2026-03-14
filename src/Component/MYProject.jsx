@@ -10,10 +10,10 @@ const projects = [
     liveLink: "https://gaming-rating.web.app/",
   },
   {
-    title: "Simple E-commerce",
-    image: "https://i.postimg.cc/BZm6sppQ/Screenshot-2026-03-02-225147.png",
-    description: "A high-performance, full-stack e-commerce platform.",
-    liveLink: "https://melodic-treacle-f5c068.netlify.app/",
+    title: " Apartment Booking Website",
+    image: "https://i.postimg.cc/L8D2TLFG/Screenshot-2026-03-14-163117.png",
+    description: "A high-performance, full-stack  Apartment Booking Website  platform.",
+    liveLink: " https://building-e4f32.web.app/",
   },
   {
     title: "Volunteer-Management",
