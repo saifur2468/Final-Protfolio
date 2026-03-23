@@ -1,32 +1,60 @@
 import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { FiArrowUpRight } from "react-icons/fi";
-import { FaArrowRight } from "react-icons/fa";
+import { FaArrowRight, FaGithub } from "react-icons/fa";
+
 const projects = [
   {
     title: "Gaming Rating Website",
     image: "https://i.postimg.cc/x811MNfL/Screenshot-2026-03-02-225059.png",
     description: "A full-stack MERN app for Game Rating",
+    features: [
+      "User Authentication",
+      "Add & Review Games",
+      "Rating System",
+      "Responsive UI",
+    ],
     liveLink: "https://gaming-rating.web.app/",
+    github: "https://github.com/saifur2468/Assignment-10-client",
   },
   {
-    title: " Apartment Booking Website",
+    title: "Apartment Booking Website",
     image: "https://i.postimg.cc/L8D2TLFG/Screenshot-2026-03-14-163117.png",
-    description: "A high-performance, full-stack  Apartment Booking Website  platform.",
-    liveLink: " https://building-e4f32.web.app/",
+    description: "Full-stack Apartment Booking platform",
+    features: [
+      "User Login & Register",
+      "Apartment Booking",
+      "Payment System",
+      "Admin Dashboard",
+    ],
+    liveLink: "https://building-e4f32.web.app/",
+    github: "https://github.com/saifur2468/Assignment-12",
   },
   {
-    title: "Volunteer-Management",
+    title: "Volunteer Management",
     image: "https://i.postimg.cc/jdGJ0vqn/Screenshot-2026-03-02-230510.png",
-    description: "Connect passionate volunteers with meaningful causes.",
+    description: "Connect volunteers with meaningful causes",
+    features: [
+      "Create Volunteer Posts",
+      "Join Requests",
+      "User Dashboard",
+      "Real-time Updates",
+    ],
     liveLink: "https://volunter-managment-ae225.web.app",
+    github: "https://github.com/saifur2468/Assignment-11-client-Side",
   },
   {
-    title: "English Janala",
-    image:
-      "https://i.postimg.cc/XYhD8dnW/Screenshot-2026-03-03-174021.png",
-    description: "Voice Word Sound",
-    liveLink: "https://loquacious-cobbler-646baf.netlify.app/",
+    title: "Bistro Restaurant Web Application",
+    image: "https://i.postimg.cc/15xcBWm1/Screenshot-2026-03-23-151950.png",
+    description: "Restaurant management system",
+    features: [
+      "Food Ordering",
+      "Cart & Payment",
+      "Table Booking",
+      "Admin Control Panel",
+    ],
+    liveLink: "https://bistro-boss-17795.web.app/",
+    github: "https://github.com/saifur2468/Bistro-restaurant-client",
   },
 ];
 
@@ -64,7 +92,8 @@ const ProjectSection = () => {
   return (
     <section id="project" className="py-20 bg-[#f1f5f9] min-h-screen">
       <div className="container mx-auto px-6">
-        {/* Section Header */}
+        
+        {/* Header */}
         <div className="mb-12">
           <motion.h2
             initial={{ opacity: 0, x: -20 }}
@@ -75,62 +104,96 @@ const ProjectSection = () => {
           </motion.h2>
         </div>
 
-        {/* Project Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project, index) => (
-            <motion.a
-              href={project.liveLink}
-              target="_blank"
-              rel="noopener noreferrer"
+            <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="group relative h-[300px] md:h-[350px] overflow-hidden cursor-pointer"
+              className="group relative h-[320px] overflow-hidden rounded-xl"
             >
+              {/* Image */}
               <div className="absolute inset-0">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-in-out"
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
                 />
-                <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors duration-300"></div>
+                <div className="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition"></div>
               </div>
 
-              <div className="absolute top-6 right-6 p-2 rounded-full border border-white/30 group-hover:bg-white group-hover:text-black transition-all duration-300">
-                <FiArrowUpRight className="text-xl text-white group-hover:text-black" />
-              </div>
+              {/* Top Icon */}
+              <a
+                href={project.liveLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute top-5 right-5 p-2 rounded-full border border-white/40 hover:bg-white hover:text-black transition"
+              >
+                <FiArrowUpRight className="text-white group-hover:text-black" />
+              </a>
 
-              <div className="absolute bottom-0 left-0 p-8 w-full text-white">
-                <motion.h3 className="text-3xl font-bold mb-2 transform group-hover:-translate-y-1 transition-transform duration-300">
+              {/* Content */}
+              <div className="absolute bottom-0 left-0 p-6 w-full text-white">
+                <h3 className="text-2xl font-bold mb-1">
                   {project.title}
-                </motion.h3>
-                <p className="text-gray-200 text-sm max-w-sm line-clamp-2 opacity-90">
+                </h3>
+
+                <p className="text-sm text-gray-300 mb-2">
                   {project.description}
                 </p>
+
+                {/* Features */}
+                <ul className="text-xs text-gray-300 list-disc ml-4 mb-3">
+                  {project.features.map((feature, i) => (
+                    <li key={i}>{feature}</li>
+                  ))}
+                </ul>
+
+                {/* Buttons */}
+                <div className="flex gap-3">
+                  <a
+                    href={project.liveLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs px-3 py-1 bg-white text-black rounded flex items-center gap-1"
+                  >
+                    Live
+                  </a>
+
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs px-3 py-1 border border-white rounded flex items-center gap-1"
+                  >
+                    <FaGithub /> Code
+                  </a>
+                </div>
               </div>
-            </motion.a>
+            </motion.div>
           ))}
         </div>
 
-        {/* Spotlight Button */}
+        {/* Button */}
         <div className="flex justify-center mt-16">
           <motion.button
-            whileTap={{ scale: 0.985 }}
+            whileTap={{ scale: 0.98 }}
             ref={btnRef}
             className="relative w-full max-w-xs overflow-hidden rounded-lg bg-slate-950 px-4 py-3 text-lg font-medium text-white"
           >
-            <span className="pointer-events-none flex items-center  gap-3 justify-center relative z-10 mix-blend-difference">
-              See All Project <FaArrowRight />
+            <span className="relative z-10 flex items-center justify-center gap-2 mix-blend-difference">
+              See All Projects <FaArrowRight />
             </span>
 
             <span
               ref={spanRef}
-              className="pointer-events-none absolute left-[50%] top-[50%] h-32 w-32 -translate-x-[50%] -translate-y-[50%] rounded-full bg-slate-100"
+              className="absolute left-[50%] top-[50%] h-32 w-32 -translate-x-[50%] -translate-y-[50%] rounded-full bg-slate-100"
             />
           </motion.button>
         </div>
+
       </div>
     </section>
   );
