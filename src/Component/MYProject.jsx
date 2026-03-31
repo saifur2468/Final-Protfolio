@@ -14,6 +14,7 @@ const projects = [
       "Rating System",
       "Responsive UI",
     ],
+    technology: ["React", "Node.js", "MongoDB", "Firebase"],
     liveLink: "https://gaming-rating.web.app/",
     github: "https://github.com/saifur2468/Assignment-10-client",
   },
@@ -27,6 +28,7 @@ const projects = [
       "Payment System",
       "Admin Dashboard",
     ],
+    technology: ["React", "Node.js", "MongoDB", "Tailwind" ,"Firebase"],
     liveLink: "https://building-e4f32.web.app/",
     github: "https://github.com/saifur2468/Assignment-12",
   },
@@ -40,8 +42,10 @@ const projects = [
       "User Dashboard",
       "Real-time Updates",
     ],
+    technology: ["React", "Express", "MongoDB", "Tailwind"],
     liveLink: "https://volunter-managment-ae225.web.app",
-    github: "https://github.com/saifur2468/Assignment-11-client-Side",
+    github:
+      "https://github.com/saifur2468/Assignment-11-client-Side",
   },
   {
     title: "Bistro Restaurant Web Application",
@@ -53,8 +57,10 @@ const projects = [
       "Table Booking",
       "Admin Control Panel",
     ],
+    technology: ["React", "Firebase", "Node.js", "MongoDB"],
     liveLink: "https://bistro-boss-17795.web.app/",
-    github: "https://github.com/saifur2468/Bistro-restaurant-client",
+    github:
+      "https://github.com/saifur2468/Bistro-restaurant-client",
   },
 ];
 
@@ -64,6 +70,8 @@ const ProjectSection = () => {
 
   useEffect(() => {
     const handleMouseMove = (e) => {
+      if (!btnRef.current || !spanRef.current) return;
+
       const { width } = btnRef.current.getBoundingClientRect();
       const offset = e.offsetX;
       const left = `${(offset / width) * 100}%`;
@@ -72,6 +80,8 @@ const ProjectSection = () => {
     };
 
     const handleMouseLeave = () => {
+      if (!spanRef.current) return;
+
       spanRef.current.animate(
         { left: "50%" },
         { duration: 200, fill: "forwards" }
@@ -80,19 +90,23 @@ const ProjectSection = () => {
 
     const button = btnRef.current;
 
-    button.addEventListener("mousemove", handleMouseMove);
-    button.addEventListener("mouseleave", handleMouseLeave);
+    if (button) {
+      button.addEventListener("mousemove", handleMouseMove);
+      button.addEventListener("mouseleave", handleMouseLeave);
+    }
 
     return () => {
-      button.removeEventListener("mousemove", handleMouseMove);
-      button.removeEventListener("mouseleave", handleMouseLeave);
+      if (button) {
+        button.removeEventListener("mousemove", handleMouseMove);
+        button.removeEventListener("mouseleave", handleMouseLeave);
+      }
     };
   }, []);
 
   return (
     <section id="project" className="py-20 bg-[#f1f5f9] min-h-screen">
       <div className="container mx-auto px-6">
-        
+
         {/* Header */}
         <div className="mb-12">
           <motion.h2
@@ -145,11 +159,23 @@ const ProjectSection = () => {
                 </p>
 
                 {/* Features */}
-                <ul className="text-xs text-gray-300 list-disc ml-4 mb-3">
+                <ul className="text-xs text-gray-300 list-disc ml-4 mb-2">
                   {project.features.map((feature, i) => (
                     <li key={i}>{feature}</li>
                   ))}
                 </ul>
+
+                {/* Technology */}
+                <div className="flex flex-wrap gap-2 mb-3">
+                  {project.technology?.map((tech, i) => (
+                    <span
+                      key={i}
+                      className="text-[10px] px-2 py-1 bg-gradient-to-r from-cyan-400 to-blue-500 text-black rounded"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
 
                 {/* Buttons */}
                 <div className="flex gap-3">
@@ -193,7 +219,6 @@ const ProjectSection = () => {
             />
           </motion.button>
         </div>
-
       </div>
     </section>
   );

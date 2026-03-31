@@ -27,9 +27,9 @@ const AboutSection = () => {
         <h2 className="text-3xl font-bold text-[#003366] flex items-center gap-3">
           About <span className="h-0.5 w-16 bg-blue-500"></span>
         </h2>
-        <p className="text-gray-400 text-sm mt-1 italic">
+        {/* <p className="text-gray-400 text-sm mt-1 italic">
           Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit
-        </p>
+        </p> */}
       </div>
 
       <div className="flex flex-col lg:flex-row gap-12 items-start">
